@@ -18,7 +18,10 @@ dist_cfgmgr_DATA = \
 		buffer_pool_vs.lua \
 		buffer_check_headroom_barefoot.lua \
 		buffer_headroom_barefoot.lua \
-		buffer_pool_barefoot.lua
+		buffer_pool_barefoot.lua \
+		buffer_check_headroom_cisco-8000.lua \
+		buffer_headroom_cisco-8000.lua \
+		buffer_pool_cisco-8000.lua
 
 if DEBUG
 DBGFLAGS = -ggdb -DDEBUG
