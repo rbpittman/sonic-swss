@@ -230,11 +230,7 @@ task_process_status PfcWdOrch<DropHandler, ForwardHandler>::createEntry(const st
                     SWSS_LOG_ERROR("Invalid PFC Watchdog action %s", value.c_str());
                     return task_process_status::task_invalid_entry;
                 }
-                if ((m_platform == CISCO_8000_PLATFORM_SUBSTRING) && (action == PfcWdAction::PFC_WD_ACTION_FORWARD)) {
-                    SWSS_LOG_ERROR("Unsupported action %s for platform %s", value.c_str(), m_platform.c_str());
-                    return task_process_status::task_invalid_entry;
-                }
-                if(m_platform == BRCM_PLATFORM_SUBSTRING)
+                if ((m_platform == BRCM_PLATFORM_SUBSTRING) || (m_platform == CISCO_8000_PLATFORM_SUBSTRING))
                 {
                     if(gSwitchOrch->checkPfcDlrInitEnable())
                     {
@@ -1123,4 +1119,3 @@ bool PfcWdSwOrch<DropHandler, ForwardHandler>::bake()
 template class PfcWdSwOrch<PfcWdZeroBufferHandler, PfcWdLossyHandler>;
 template class PfcWdSwOrch<PfcWdAclHandler, PfcWdLossyHandler>;
 template class PfcWdSwOrch<PfcWdDlrHandler, PfcWdDlrHandler>;
-template class PfcWdSwOrch<PfcWdSaiDlrInitHandler, PfcWdActionHandler>;
